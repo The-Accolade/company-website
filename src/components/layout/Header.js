@@ -1,14 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
-import About from '../../views/About';
-import Projects from '../../views/Projects';
-import Contact from '../../views/Contact';
+// import Navigation from '../elements/Navigation';
+// import Logo from './partials/Logo';
+import { Link } from 'react-router-dom';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -122,32 +117,26 @@ const Header = ({
                     )}
                   >
                     <li>
-                      <NavLink to="/" onClick={closeMenu}>
+                      <Link to="/" onClick={closeMenu}>
                         Home
-                      </NavLink>
+                      </Link>
                     </li>
                     <li>
-                      <NavLink to="/about" onClick={closeMenu}>
+                      <Link to="/about" onClick={closeMenu}>
                         About
-                      </NavLink>
+                      </Link>
                     </li>
                     <li>
-                      <NavLink to="/contact" onClick={closeMenu}>
+                      <Link to="/contact" onClick={closeMenu}>
                         Contact
-                      </NavLink>
+                      </Link>
                     </li>
                     <li>
-                      <NavLink to="/projects" onClick={closeMenu}>
+                      <Link to="/projects" onClick={closeMenu}>
                         Projects
-                      </NavLink>
+                      </Link>
                     </li>
                   </ul>
-                  <Switch>
-                    <Route exact path="/about" render={About} />
-                    <Route exact path="/contact" component={Contact} />
-                    <Route exact path="/projects" component={Projects} />
-                    <Route exact path="/" />
-                  </Switch>
                 </div>
               </nav>
             </>

@@ -1,16 +1,20 @@
 import React from 'react';
-import FeaturesTiles from '../components/sections/FeaturesTiles';
 import FeaturesSplit from '../components/sections/FeaturesSplit';
-import Testimonial from '../components/sections/Testimonial';
 
 const About = () => {
   return (
-    <div>
-      <h1>Hello From About Page </h1> 
-      <FeaturesTiles />
-      <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
-      <Testimonial topDivider />
-    </div>
+    <section>
+      {/* styling contained in scss/themes/section/hero.scss */}
+      <div className="about-section"> 
+        <h2 className="title">About us</h2>
+      </div>
+      <FeaturesSplit
+        invertMobile
+        // topDivider
+        imageFill
+        className="illustration-section-02"
+      />
+    </section>
   );
 };
 

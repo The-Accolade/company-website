@@ -9,6 +9,9 @@ import LayoutDefault from './layouts/LayoutDefault';
 
 // Views 
 import Home from './views/Home';
+import About from './views/About';
+import Contact from './views/Contact';
+import Projects from './views/Projects';
 
 // Initialize Google Analytics
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
@@ -31,12 +34,34 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
+const pages = [
+  {path: "/", component: Home, exact: true},
+  {path: "/about", component: About, exact: true},
+  {path: "/contact", component: Contact, exact: true},
+  {path: "/projects", component: Projects, exact: true},
+]
+
   return (
     <ScrollReveal
       ref={childRef}
       children={() => (
         <Switch>
-          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          {pages.map((page, id)=>{
+            
+          return (
+        
+              <AppRoute 
+              exact = {page.exact} 
+              path={page.path} 
+              component={page.component}
+              layout={LayoutDefault}
+              />
+         
+              
+              )
+
+          })}
+          {/* <AppRoute exact path="/" component={About} layout={LayoutDefault} /> */}
         </Switch>
       )} />
   );
