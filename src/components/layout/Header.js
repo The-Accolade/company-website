@@ -1,15 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import Navigation from '../elements/Navigation';
-// import Logo from './partials/Logo';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Home from '../../views/Home';
+import {
+  Switch,
+  Route,
+  NavLink,
+} from 'react-router-dom';
 import About from '../../views/About';
-import Documentation from '../../views/Documentation';
-import Offices from '../../views/Offices';
+import Projects from '../../views/Projects';
 import Contact from '../../views/Contact';
-import Signup from '../../views/Signup';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -86,99 +85,76 @@ const Header = ({
   );
 
   return (
-    <Router>
-      <header {...props} className={classes}>
-        <div className="container">
-          <div
-            className={classNames(
-              'site-header-inner',
-              bottomDivider && 'has-bottom-divider'
-            )}
-          >
-            <img
-              src="https://ait.live/wp-content/uploads/2020/03/AIT-NEWS-1-2.png"
-              style={{ height: 50 }}
-              alt="Enugu State"
-            />
-            {!hideNav && (
-              <>
-                <button
-                  ref={hamburger}
-                  className="header-nav-toggle"
-                  onClick={isActive ? closeMenu : openMenu}
-                >
-                  <span className="screen-reader">Menu</span>
-                  <span className="hamburger">
-                    <span className="hamburger-inner"></span>
-                  </span>
-                </button>
-                <nav
-                  ref={nav}
-                  className={classNames('header-nav', isActive && 'is-active')}
-                >
-                  <div className="header-nav-inner">
-                    <ul
-                      className={classNames(
-                        'list-reset text-xs',
-                        navPosition && `header-nav-${navPosition}`
-                      )}
-                    >
-                      <li>
-                        <Link to="/" onClick={closeMenu}>
-                          Home
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/about" onClick={closeMenu}>
-                          About
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/contact" onClick={closeMenu}>
-                          Contact
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/offices" onClick={closeMenu}>
-                          Offices
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/documentation" onClick={closeMenu}>
-                          Documentation
-                        </Link>
-                      </li>
-                    </ul>
-                    {!hideSignin && (
-                      <ul className="list-reset header-nav-right">
-                        <li>
-                          <Link
-                            to="/signup"
-                            className="button button-primary button-wide-mobile button-sm"
-                            onClick={closeMenu}
-                          >
-                            Sign up
-                          </Link>
-                        </li>
-                      </ul>
+    <header {...props} className={classes}>
+      <div className="container">
+        <div
+          className={classNames(
+            'site-header-inner',
+            bottomDivider && 'has-bottom-divider'
+          )}
+        >
+          <img
+            src="https://ait.live/wp-content/uploads/2020/03/AIT-NEWS-1-2.png"
+            style={{ height: 50 }}
+            alt="Enugu State"
+          />
+          {!hideNav && (
+            <>
+              <button
+                ref={hamburger}
+                className="header-nav-toggle"
+                onClick={isActive ? closeMenu : openMenu}
+              >
+                <span className="screen-reader">Menu</span>
+                <span className="hamburger">
+                  <span className="hamburger-inner"></span>
+                </span>
+              </button>
+              <nav
+                ref={nav}
+                className={classNames('header-nav', isActive && 'is-active')}
+              >
+                <div className="header-nav-inner">
+                  <ul
+                    className={classNames(
+                      'list-reset text-xs',
+                      navPosition && `header-nav-${navPosition}`
                     )}
-                  </div>
-                </nav>
-              </>
-            )}
-          </div>
+                  >
+                    <li>
+                      <NavLink to="/" onClick={closeMenu}>
+                        Home
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/about" onClick={closeMenu}>
+                        About
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/contact" onClick={closeMenu}>
+                        Contact
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/projects" onClick={closeMenu}>
+                        Projects
+                      </NavLink>
+                    </li>
+                  </ul>
+                  <Switch>
+                    <Route exact path="/about" render={About} />
+                    <Route exact path="/contact" component={Contact} />
+                    <Route exact path="/projects" component={Projects} />
+                    <Route exact path="/" />
+                  </Switch>
+                </div>
+              </nav>
+            </>
+          )}
         </div>
-      </header>
-
-      <Switch>
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/offices" component={Offices} />
-        <Route path="/documentation" component={Documentation} />
-        <Route path="/signup" component={Signup} />
-        <Route exact path="/" component={Home} />
-      </Switch>
-    </Router>
+      </div>
+    </header>
   );
 };
 

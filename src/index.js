@@ -12,9 +12,11 @@ import './assets/scss/style.scss';
 const history = createBrowserHistory();
 
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>,
+  <React.StrictMode>
+    <Router history={history}>
+      <App />
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
