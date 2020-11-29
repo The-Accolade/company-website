@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 // import Navigation from '../elements/Navigation';
-// import Logo from './partials/Logo';
+import Logo from '../../assets/pictures/logo.png';
 import { Link } from 'react-router-dom';
 
 const propTypes = {
@@ -89,9 +89,9 @@ const Header = ({
           )}
         >
           <img
-            src="https://ait.live/wp-content/uploads/2020/03/AIT-NEWS-1-2.png"
+            src={Logo}
             style={{ height: 50 }}
-            alt="Enugu State"
+            alt="Lagos State"
           />
           {!hideNav && (
             <>

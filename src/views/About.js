@@ -1,19 +1,22 @@
 import React from 'react';
-import FeaturesSplit from '../components/sections/FeaturesSplit';
+import Features from './partials/Features';
+import AgenciesSection from './partials/AgenciesSection';
+import Mandate from './partials/Mandate';
 
 const About = () => {
   return (
     <section>
       {/* styling contained in scss/themes/section/hero.scss */}
-      <div className="about-section"> 
+      <div className="about-section">
         <h2 className="title">About us</h2>
       </div>
-      <FeaturesSplit
-        invertMobile
-        // topDivider
-        imageFill
-        className="illustration-section-02"
-      />
+      <Features />
+      <div className="about-container-1" >
+        <AgenciesSection />
+      </div>
+      <div className="about-container-2" >
+        <Mandate/>
+      </div>
     </section>
   );
 };

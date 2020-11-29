@@ -1,12 +1,19 @@
 .hero {
 	background-image: linear-gradient(
 		to right bottom, 
-			rgba(#9ca9b3, 0.8), 
-			rgba(#ECEDED, 0.8)),
-		url('https://guardian.ng/wp-content/uploads/2019/12/enugustatewebsite_mexygabriel-1.jpg'
+			transparent, 
+			rgba(white, 0.9)),
+		url('https://www.propertypro.ng/guide/wp-content/uploads/2018/07/DSC_0859-1600x656.jpg'
 	);
 
 	background-size: cover;
+
+	&-content-title {
+		color: get-color(light, 1);
+		font-size: 1.1rem;
+		font-weight: bold;
+		background-color: rgba(get-color(primary, 1), 0.7);
+	}
 
 	.section-inner {
 		padding-top: $hero--padding-t__mobile;
