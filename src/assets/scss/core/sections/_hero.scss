@@ -13,6 +13,7 @@
 		font-size: 1.1rem;
 		font-weight: bold;
 		background-color: rgba(get-color(primary, 1), 0.7);
+		animation: pulsate 1s infinite;
 	}
 
 	.section-inner {
@@ -65,6 +66,24 @@
 		}
 	}
 }
+
+@keyframes pulsate {
+	0% {
+	  transform: scale(1);
+	  box-shadow: none;
+	}
+  
+	50% {
+	  transform: scale(1.05);
+	  box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+	}
+  
+	100% {
+	  transform: scale(1);
+	  box-shadow: none;
+	}
+  }
+  
 
 @include media( '>medium' ) {
 
